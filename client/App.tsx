@@ -25,15 +25,17 @@ export type RootStackParamList = {
 export default function App() {
   return (
     <NativeBaseProvider>
-      <Box style={styles.container} safeAreaTop>
-        <NavigationContainer>
-          <Stack.Navigator>
+      <NavigationContainer >
+      <Box style={styles.container} safeAreaTop>      
+          <Stack.Navigator   screenOptions={{
+    headerShown: false
+  }}>
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Profile" component={Profile} />
-          </Stack.Navigator>
-        </NavigationContainer>
+          </Stack.Navigator>      
       </Box>
       <AppBar />
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 }

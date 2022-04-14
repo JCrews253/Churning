@@ -21,7 +21,6 @@ const Home = () => {
     <Box style={styles.container}>
       <IssuerStatuses />
       <ActiveSUBs />
-      <Button onPress={() => navigation.navigate("Profile")}></Button>
     </Box>
   );
 };

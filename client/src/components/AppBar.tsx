@@ -1,4 +1,6 @@
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import {
   Box,
   Center,
@@ -10,9 +12,12 @@ import {
   Badge,
 } from "native-base";
 import React, { useState } from "react";
+import { RootStackParamList } from "../../App";
 
 const AppBar = () => {
   const [selected, setSelected] = useState(1);
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+
   return (
     <Box
       flex={1}
@@ -27,7 +32,10 @@ const AppBar = () => {
           opacity={selected === 0 ? 1 : 0.5}
           py="3"
           flex={1}
-          onPress={() => setSelected(0)}
+          onPress={() => {
+            setSelected(0)
+            navigation.reset({routes: [{name: 'Home'}]})
+          }}
         >
           <Center>
             <Icon
@@ -117,7 +125,12 @@ const AppBar = () => {
           opacity={selected === 3 ? 1 : 0.5}
           py="2"
           flex={1}
-          onPress={() => setSelected(3)}
+          onPress={() => {
+            setSelected(3)
+            //navigation.navigate('Profile')
+            navigation.reset({routes: [{name: 'Profile'}]})
+            
+          }}
         >
           <Center>
             <Icon
