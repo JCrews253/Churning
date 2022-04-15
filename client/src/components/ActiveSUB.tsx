@@ -1,6 +1,6 @@
 import { VStack, Text, HStack, Progress } from "native-base";
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 
 const styles = StyleSheet.create({
   textTop: {
@@ -21,6 +21,7 @@ interface ActiveSUBProps {
   currentSpend: number;
   neededSpend: number;
   date: string;
+  onPress: () => void;
 }
 
 const ActiveSUB = ({
@@ -29,9 +30,10 @@ const ActiveSUB = ({
   subOffer,
   currentSpend,
   neededSpend,
+  onPress,
 }: ActiveSUBProps) => {
   return (
-    <View>
+    <TouchableOpacity onPress={onPress}>
       <VStack>
         <HStack style={styles.textTop}>
           <Text>{cardName}</Text>
@@ -46,7 +48,7 @@ const ActiveSUB = ({
           <Text>{`$${currentSpend} / $${neededSpend}`}</Text>
         </HStack>
       </VStack>
-    </View>
+    </TouchableOpacity>
   );
 };
 
